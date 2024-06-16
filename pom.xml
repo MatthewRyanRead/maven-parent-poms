@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>tech.readonly.maven</groupId>
+        <artifactId>maven-parent-simple</artifactId>
+        <version>1.0.0.0-SNAPSHOT</version>
+        <relativePath>./maven-parent-simple</relativePath>
+    </parent>
+
+    <artifactId>maven-parent-poms-reactor</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0.0-SNAPSHOT</version>
+    <url>https://github.com/MatthewRyanRead/maven-parent-poms</url>
+    <name>Maven Parent POMs Reactor</name>
+    <description>Manages the build for maven-parent-poms</description>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <java.version>8</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+    </properties>
+</project>
+
+
