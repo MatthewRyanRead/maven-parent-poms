@@ -1,12 +1,14 @@
 ---
 
 # Runs on PRs to ensure the changes meet requirements and pass tests.
+# Can also be run on-demand to validate branches.
 name: PR Validation
 
 on:  # yamllint disable-line rule:truthy
   pull_request:
     branches: [main]
     types: [opened, reopened, synchronize]
+  workflow_dispatch:
 
 jobs:
   pr-validation:
