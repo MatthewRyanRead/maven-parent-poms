@@ -45,6 +45,7 @@ jobs:
       - name: Build and test
         run: mvn -o verify
 
-      # dependency:analyze-only is run as part of the previous step, but this sometimes catches more
+      # dependency:analyze-only is run as part of the previous step,
+      # but this sometimes catches more
       - name: Run dependency and bug analysis
         run: mvn -o -B dependency:analyze
