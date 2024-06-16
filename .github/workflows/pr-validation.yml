@@ -1,0 +1,48 @@
+---
+
+# Runs on PRs to ensure the changes meet requirements and pass tests.
+name: PR Validation
+
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize]
+
+jobs:
+  pr-validation:
+    name: PR Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: YAML linting
+        uses: karancode/yamllint-github-action@v2.1.1
+        with:
+          yamllint_strict: true
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+          check-latest: false
+
+      - name: Set up Maven
+        uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.6
+
+      - name: Resolve dependencies
+        run: |
+          mvn dependency:resolve-plugins
+          mvn dependency:resolve-plugins -P release
+          mvn dependency:go-offline
+
+      - name: Build and test
+        run: mvn -o verify
+
+      # dependency:analyze-only is run as part of the previous step, but this sometimes catches more
+      - name: Run dependency and bug analysis
+        run: mvn -o -B dependency:analyze
