@@ -12,8 +12,14 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   pr-validation:
-    name: PR Validation
+    name: PR Validation (Maven ${{ matrix.maven-version }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        maven-version:
+          - 3.9.8
+          - 4.0.0-beta-3
 
     steps:
       - name: Check out repo
@@ -34,7 +40,7 @@ jobs:
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5
         with:
-          maven-version: 3.9.6
+          maven-version: ${{ matrix.maven-version }}
 
       - name: Resolve dependencies
         run: |
