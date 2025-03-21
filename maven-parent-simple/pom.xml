@@ -21,17 +21,22 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:RentTheRunway/alchemy.git</connection>
-        <developerConnection>scm:git:git@github.com:RentTheRunway/alchemy.git</developerConnection>
-        <url>https://github.com/RentTheRunway/alchemy</url>
+        <connection>scm:git:git@github.com:MatthewRyanRead/maven-parent-poms.git</connection>
+        <developerConnection>${project.scm.connection}</developerConnection>
+        <url>${project.url}/tree/${project.scm.tag}</url>
         <tag>HEAD</tag>
     </scm>
+
+    <ciManagement>
+        <system>GitHub</system>
+        <url>${project.url}/actions</url>
+    </ciManagement>
 
     <developers>
         <developer>
             <name>Matthew Read</name>
             <email>MatthewRyanRead@users.noreply.github.com</email>
-            <timezone>American/New_York</timezone>
+            <timezone>America/New_York</timezone>
             <url>https://readonly.tech</url>
             <organization>Read Only Technology</organization>
             <organizationUrl>https://readonly.tech</organizationUrl>
@@ -50,41 +55,45 @@
 
         <maven-checkstyle-plugin.version>3.4.0</maven-checkstyle-plugin.version>
 
-        <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
+        <maven-clean-plugin.version>3.4.1</maven-clean-plugin.version>
 
-        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
 
-        <maven-dependency-plugin.version>3.7.0</maven-dependency-plugin.version>
+        <maven-dependency-plugin.version>3.8.1</maven-dependency-plugin.version>
 
-        <maven-deploy-plugin.version>3.1.2</maven-deploy-plugin.version>
+        <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
 
         <maven-enforcer-plugin.version>3.5.0</maven-enforcer-plugin.version>
 
-        <maven-failsafe-plugin.version>3.3.0</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
 
         <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
 
-        <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
+        <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
 
-        <maven-jar-plugin.version>3.4.1</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 
-        <maven-jxr-plugin.version>3.3.2</maven-jxr-plugin.version>
+        <maven-jxr-plugin.version>3.6.0</maven-jxr-plugin.version>
 
-        <maven-javadoc-plugin.version>3.7.0</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.11.2</maven-javadoc-plugin.version>
 
-        <maven-plugin-plugin.version>3.13.1</maven-plugin-plugin.version>
+        <maven-plugin-plugin.version>3.15.1</maven-plugin-plugin.version>
 
-        <maven-project-info-reports-plugin.version>3.6.2</maven-project-info-reports-plugin.version>
+        <maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
 
-        <maven-release-plugin.version>3.1.0</maven-release-plugin.version>
+        <maven-release-plugin.version>3.1.1</maven-release-plugin.version>
 
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
 
         <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
 
+        <maven-site-plugin.version>3.21.0</maven-shade-plugin.version>
+
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
 
-        <maven-surefire-plugin.version>3.3.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+
+        <maven-surefire-report-plugin.version>${maven-surefire-plugin.version}</maven-surefire-report-plugin.version>
     </properties>
 
     <build>
@@ -206,6 +215,12 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${maven-source-plugin.version}</version>
                 </plugin>
@@ -214,6 +229,12 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-report-plugin</artifactId>
+                    <version>${maven-surefire-report-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
