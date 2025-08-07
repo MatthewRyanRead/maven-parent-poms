@@ -13,14 +13,13 @@
 
     <packaging>pom</packaging>
     <artifactId>maven-parent-opinionated</artifactId>
-    <url>https://github.com/MatthewRyanRead/maven-parent-poms</url>
     <name>Opinionated Maven Parent POM</name>
     <description>Pins the latest Maven plugins with idealized configuration and executions</description>
 
     <properties>
-        <encoding>UTF-8</encoding>
-        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+        <defaultEncoding>UTF-8</defaultEncoding>
+        <project.build.sourceEncoding>${defaultEncoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${defaultEncoding}</project.reporting.outputEncoding>
     </properties>
 
     <build>
@@ -58,7 +57,6 @@
                                 <verbose>true</verbose>
                             </banDynamicVersions>
                             <dependencyConvergence />
-                            <reactorModuleConvergence />
                             <requireReleaseDeps>
                                 <excludes>
                                     <dep>${project.groupId}:*</dep>
@@ -98,9 +96,9 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
                     <configuration>
-                        <charset>${encoding}</charset>
-                        <docencoding>${encoding}</docencoding>
-                        <encoding>${encoding}</encoding>
+                        <charset>${defaultEncoding}</charset>
+                        <docencoding>${defaultEncoding}</docencoding>
+                        <encoding>${defaultEncoding}</encoding>
                         <failOnWarnings>true</failOnWarnings>
                     </configuration>
                     <executions>

@@ -18,6 +18,12 @@
     <name>Maven Parent POMs Reactor</name>
     <description>Manages the build for maven-parent-poms</description>
 
+    <modules>
+        <module>maven-parent-simple</module>
+        <module>maven-parent-opinionated</module>
+        <module>test</module>
+    </modules>
+
     <properties>
         <java.version>21</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
@@ -59,7 +65,7 @@
                                 <version>[${java.version},)</version>
                             </requireJavaVersion>
                             <requireMavenVersion>
-                                <version>[3.9.9,)</version>
+                                <version>[3.9.11,),[4.0.0-rc-4,)</version>
                             </requireMavenVersion>
                         </rules>
                     </configuration>
