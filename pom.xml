@@ -43,6 +43,7 @@
                     <artifactId>fmt-maven-plugin</artifactId>
                     <version>${fmt-maven-plugin.version}</version>
                     <configuration>
+                        <skipRemovingUnusedImports>false</skipRemovingUnusedImports>
                         <style>aosp</style>
                     </configuration>
                     <executions>
