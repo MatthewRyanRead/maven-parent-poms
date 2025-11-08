@@ -23,6 +23,9 @@ env:
 jobs:
   yaml-linting:
     name: Linting
+    permissions:
+      contents: read
+      checks: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
@@ -37,11 +40,14 @@ jobs:
         uses: raven-actions/actionlint@v2
 
   cache-dependencies:
-    name: Cache dependencies
-    runs-on: ubuntu-latest
+    name: Cache Dependencies
     outputs:
       MAVEN_3_VERSION: ${{ steps.set-outputs.outputs.MAVEN_3_VERSION }}
       MAVEN_4_VERSION: ${{ steps.set-outputs.outputs.MAVEN_4_VERSION }}
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v5
@@ -82,8 +88,11 @@ jobs:
 
   build-validation:
     name: PR Validation (Maven ${{ matrix.maven-version }}, Java ${{ matrix.java-version }})
-    runs-on: ubuntu-latest
     needs: [cache-dependencies]
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
