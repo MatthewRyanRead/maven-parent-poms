@@ -61,7 +61,7 @@ jobs:
           mvn dependency:resolve-plugins
           mvn dependency:resolve
           mvn dependency:go-offline
-          mvn -Djava.version=${{ matrix.java-version }} -o verify -DskipTests -DskipITs
+          mvn -o verify -DskipTests -DskipITs
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
