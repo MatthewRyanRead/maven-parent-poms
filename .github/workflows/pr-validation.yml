@@ -46,12 +46,12 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v5
 
-      - name: Set up JDK 21
+      - name: Set up JDK 25
         uses: actions/setup-java@v5
         with:
           check-latest: false
           distribution: temurin
-          java-version: 21
+          java-version: 25
 
       - name: Set up Maven
         uses: stCarolas/setup-maven@v5
@@ -93,6 +93,7 @@ jobs:
         java-version:
           - 17
           - 21
+          - 25
         include:
           - maven-version: ${{ needs.cache-dependencies.outputs.MAVEN_3_VERSION }}
             java-version: 8
