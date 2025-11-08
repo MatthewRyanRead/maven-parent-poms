@@ -25,9 +25,6 @@
     </modules>
 
     <properties>
-        <java.version>25</java.version>
-        <maven.compiler.release>${java.version}</maven.compiler.release>
-
         <!-- plugin versions -->
 
         <fmt-maven-plugin.version>2.29</fmt-maven-plugin.version>
