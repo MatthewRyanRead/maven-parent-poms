@@ -98,6 +98,7 @@
                     <configuration>
                         <charset>${defaultEncoding}</charset>
                         <docencoding>${defaultEncoding}</docencoding>
+                        <doclint>all,-missing</doclint>
                         <encoding>${defaultEncoding}</encoding>
                         <failOnWarnings>true</failOnWarnings>
                     </configuration>
