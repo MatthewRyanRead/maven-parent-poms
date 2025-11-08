@@ -47,6 +47,11 @@
     </developers>
 
     <properties>
+        <java.version>25</java.version>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
+
+        <!-- plugin versions -->
+
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
 
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
