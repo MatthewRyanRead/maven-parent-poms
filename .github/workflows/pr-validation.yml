@@ -18,7 +18,7 @@ concurrency:
 
 env:
   MAVEN_3_VERSION: 3.9.11
-  MAVEN_4_VERSION: 4.0.0-rc-4
+  MAVEN_4_VERSION: 4.0.0-rc-5
 
 jobs:
   yaml-linting:
