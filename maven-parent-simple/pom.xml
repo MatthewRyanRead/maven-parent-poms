@@ -57,7 +57,7 @@
 
         <maven-artifact-plugin.version>3.6.1</maven-artifact-plugin.version>
 
-        <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
 
         <maven-changelog-plugin.version>3.0.0-M1</maven-changelog-plugin.version>
 
