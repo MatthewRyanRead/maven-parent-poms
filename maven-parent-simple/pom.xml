@@ -124,7 +124,7 @@
 
         <maven-site-plugin.version>3.21.0</maven-site-plugin.version>
 
-        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
+        <maven-source-plugin.version>3.4.0</maven-source-plugin.version>
 
         <!-- not updated since 2015; be careful using this! -->
         <maven-stage-plugin.version>1.0</maven-stage-plugin.version>
