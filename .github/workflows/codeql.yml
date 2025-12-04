@@ -10,6 +10,11 @@ on:  # yamllint disable-line rule:truthy
     branches:
       - main
 
+concurrency:
+  # only one of this action may run per branch
+  group: ${{ github.event.pull_request.head.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
