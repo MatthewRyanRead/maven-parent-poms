@@ -118,7 +118,7 @@
         <maven-scm-publish-plugin.version>3.3.0</maven-scm-publish-plugin.version>
 
         <!-- not updated since 2021; be careful using this! -->
-        <maven-scripting-plugin.version>3.0.0</maven-scripting-plugin.version>
+        <maven-scripting-plugin.version>3.1.0</maven-scripting-plugin.version>
 
         <maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
 
