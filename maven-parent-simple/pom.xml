@@ -73,8 +73,7 @@
 
         <maven-deploy-plugin.version>3.1.4</maven-deploy-plugin.version>
 
-        <!-- not updated since 2015; be careful using this! -->
-        <maven-doap-plugin.version>1.2</maven-doap-plugin.version>
+        <maven-doap-plugin.version>3.0.0-M1</maven-doap-plugin.version>
 
         <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
 
@@ -94,7 +93,6 @@
 
         <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
 
-        <!-- not updated since 2019; be careful using this! -->
         <maven-jdeps-plugin.version>3.2.0</maven-jdeps-plugin.version>
 
         <maven-jxr-plugin.version>3.6.0</maven-jxr-plugin.version>
@@ -117,8 +115,7 @@
 
         <maven-scm-publish-plugin.version>3.3.0</maven-scm-publish-plugin.version>
 
-        <!-- not updated since 2021; be careful using this! -->
-        <maven-scripting-plugin.version>3.0.0</maven-scripting-plugin.version>
+        <maven-scripting-plugin.version>3.1.0</maven-scripting-plugin.version>
 
         <maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
 
