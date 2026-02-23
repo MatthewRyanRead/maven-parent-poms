@@ -126,7 +126,7 @@
         <!-- not updated since 2015; be careful using this! -->
         <maven-stage-plugin.version>1.0</maven-stage-plugin.version>
 
-        <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.5.5</maven-surefire-plugin.version>
 
         <maven-surefire-report-plugin.version>${maven-surefire-plugin.version}</maven-surefire-report-plugin.version>
 
