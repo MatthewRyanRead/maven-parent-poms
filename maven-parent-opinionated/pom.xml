@@ -114,6 +114,24 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jdeprscan-plugin</artifactId>
+                    <version>${maven-jdeprscan-plugin.version}</version>
+                    <configuration>
+                        <forRemoval>true</forRemoval>
+                        <release>${java.version}</release>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>jdeprscan</id>
+                            <goals>
+                                <goal>jdeprscan</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin.version}</version>
                     <configuration>
@@ -141,4 +159,24 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <profile>
+            <id>java9plus-opinionated</id>
+            <activation>
+                <jdk>[9,)</jdk>
+            </activation>
+
+            <build>
+                <plugins>
+                    <!-- does not work on Java 8 -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jdeprscan-plugin</artifactId>
+                        <version>${maven-jdeprscan-plugin.version}</version>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
