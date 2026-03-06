@@ -9,10 +9,11 @@ on:  # yamllint disable-line rule:truthy
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 concurrency:
   # only one of this action may run per branch
-  group: ${{ github.event.pull_request.head.ref }}-${{ github.workflow }}
+  group: ${{ github.event.pull_request.head.ref || github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:
