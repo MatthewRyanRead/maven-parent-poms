@@ -1,0 +1,9 @@
+---
+
+extends: default
+rules:
+  # GHA syntax is often not conducive to short lines
+  line-length: disable
+  # the GHA 'on' key is treated like it means on/off; only relevant for values
+  truthy:
+    check-keys: false
