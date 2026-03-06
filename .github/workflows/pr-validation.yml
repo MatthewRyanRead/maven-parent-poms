@@ -1,11 +1,10 @@
-# yamllint disable rule:line-length
 ---
 
 # Runs on PRs to ensure the changes meet requirements and pass tests.
 # Can also be run on-demand to validate branches.
 name: PR Validation
 
-on:  # yamllint disable-line rule:truthy
+on:
   pull_request:
     branches: [main]
     types: [opened, reopened, synchronize]
@@ -17,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  MAVEN_3_VERSION: 3.9.12
+  MAVEN_3_VERSION: 3.9.13
   MAVEN_4_VERSION: 4.0.0-rc-5
 
 jobs:
@@ -30,6 +29,11 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v6
+
+      - name: Run woke
+        uses: get-woke/woke-action@v0
+        with:
+          fail-on-error: true
 
       - name: YAML linting
         uses: karancode/yamllint-github-action@v3.0.0
@@ -74,8 +78,6 @@ jobs:
 
       - name: Resolve dependencies
         run: |
-          mvn install -f maven-parent-simple/pom.xml
-          mvn install -f maven-parent-opinionated/pom.xml
           mvn dependency:resolve-plugins
           mvn dependency:resolve
           mvn dependency:go-offline
@@ -108,7 +110,6 @@ jobs:
             java-version: 8
           - maven-version: ${{ needs.cache-dependencies.outputs.MAVEN_3_VERSION }}
             java-version: 11
-
     steps:
       - name: Check out repo
         uses: actions/checkout@v6

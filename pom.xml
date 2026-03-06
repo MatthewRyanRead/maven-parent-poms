@@ -13,7 +13,6 @@
 
     <artifactId>maven-parent-poms-reactor</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0.0-SNAPSHOT</version>
     <url>https://github.com/MatthewRyanRead/maven-parent-poms</url>
     <name>Maven Parent POMs Reactor</name>
     <description>Manages the build for maven-parent-poms</description>
@@ -64,7 +63,7 @@
                                 <version>[${java.version},)</version>
                             </requireJavaVersion>
                             <requireMavenVersion>
-                                <version>[3.9.12,),[4.0.0-rc-5,)</version>
+                                <version>[3.9.13,),[4.0.0-rc-5,)</version>
                             </requireMavenVersion>
                         </rules>
                     </configuration>
