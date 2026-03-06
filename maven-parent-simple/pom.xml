@@ -117,7 +117,7 @@
 
         <maven-scripting-plugin.version>3.1.0</maven-scripting-plugin.version>
 
-        <maven-shade-plugin.version>3.6.1</maven-shade-plugin.version>
+        <maven-shade-plugin.version>3.6.2</maven-shade-plugin.version>
 
         <maven-site-plugin.version>3.21.0</maven-site-plugin.version>
 
