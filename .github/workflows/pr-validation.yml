@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  MAVEN_3_VERSION: 3.9.13
+  MAVEN_3_VERSION: 3.9.16
   MAVEN_4_VERSION: 4.0.0-rc-5
 
 jobs:
