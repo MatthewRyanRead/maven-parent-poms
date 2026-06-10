@@ -59,7 +59,7 @@
 
         <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
 
-        <maven-changelog-plugin.version>3.0.0-M1</maven-changelog-plugin.version>
+        <maven-changelog-plugin.version>3.0.0-M2</maven-changelog-plugin.version>
 
         <maven-changes-plugin.version>3.0.0-M3</maven-changes-plugin.version>
 
