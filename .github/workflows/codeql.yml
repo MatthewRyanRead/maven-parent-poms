@@ -11,19 +11,23 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  security-events: write
+  packages: read
+  contents: read
+
 concurrency:
   # only one of this action may run per branch
   group: ${{ github.event.pull_request.head.ref || github.ref_name }}-${{ github.workflow }}
   cancel-in-progress: true
 
+env:
+  MAVEN_3_VERSION: 3.9.16
+
 jobs:
   analyze:
     name: Analyze (${{ matrix.language }})
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write
-      packages: read
-      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -54,7 +58,7 @@ jobs:
         uses: stCarolas/setup-maven@v5
         if: ${{ matrix.language == 'java-kotlin' }}
         with:
-          maven-version: 3.9.16
+          maven-version: ${{ env.MAVEN_3_VERSION }}
 
       - name: Cache local Maven repository
         if: ${{ matrix.language == 'java-kotlin' }}

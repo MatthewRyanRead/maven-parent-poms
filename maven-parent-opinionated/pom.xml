@@ -16,6 +16,21 @@
     <name>Opinionated Maven Parent POM</name>
     <description>Pins the latest Maven plugins with idealized configuration and executions</description>
 
+    <licenses>
+        <license>
+            <distribution>repo</distribution>
+            <name>GNU Lesser General Public License, Version 2.1</name>
+            <url>https://github.com/MatthewRyanRead/maven-parent-poms/blob/main/LICENSE</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:MatthewRyanRead/maven-parent-poms.git</connection>
+        <developerConnection>${project.scm.connection}</developerConnection>
+        <url>${project.url}/tree/${project.scm.tag}</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <defaultEncoding>UTF-8</defaultEncoding>
         <project.build.sourceEncoding>${defaultEncoding}</project.build.sourceEncoding>
@@ -29,7 +44,14 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${maven-dependency-plugin.version}</version>
+                    <configuration>
+                        <!-- warnings should be dealt with before they cause problems -->
+                        <failOnWarning>true</failOnWarning>
+                        <!-- static plugins cannot detect runtime use -->
+                        <ignoreUnusedRuntime>true</ignoreUnusedRuntime>
+                    </configuration>
                     <executions>
+                        <!-- always run analysis -->
                         <execution>
                             <id>analyze-only</id>
                             <goals>
@@ -37,10 +59,6 @@
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <failOnWarning>true</failOnWarning>
-                        <ignoreUnusedRuntime>true</ignoreUnusedRuntime>
-                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -49,14 +67,18 @@
                     <version>${maven-enforcer-plugin.version}</version>
                     <configuration>
                         <rules>
+                            <!-- why allow for conflicts or useless duplication? -->
                             <banDuplicatePomDependencyVersions />
+                            <!-- versions should be fixed for consistency and reproducibility -->
                             <banDynamicVersions>
                                 <ignores>
                                     <dep>${project.groupId}:*</dep>
                                 </ignores>
                                 <verbose>true</verbose>
                             </banDynamicVersions>
+                            <!-- versions should be fixed for consistency and reproducibility -->
                             <dependencyConvergence />
+                            <!-- no mutable snapshots as dependencies! -->
                             <requireReleaseDeps>
                                 <excludes>
                                     <dep>${project.groupId}:*</dep>
@@ -65,6 +87,7 @@
                         </rules>
                     </configuration>
                     <executions>
+                        <!-- always run analysis -->
                         <execution>
                             <id>enforce</id>
                             <goals>
@@ -79,6 +102,7 @@
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>${maven-jar-plugin.version}</version>
                     <configuration>
+                        <!-- add basic info to JARs -->
                         <archive>
                             <manifest>
                                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
@@ -96,13 +120,18 @@
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
                     <configuration>
+                        <!-- align encodings -->
                         <charset>${defaultEncoding}</charset>
                         <docencoding>${defaultEncoding}</docencoding>
-                        <doclint>all,-missing</doclint>
                         <encoding>${defaultEncoding}</encoding>
+                        <!-- don't require docs for every little thing -->
+                        <!-- however, any docs present must be correct -->
+                        <doclint>all,-missing</doclint>
+                        <!-- warnings should be dealt with before they cause problems -->
                         <failOnWarnings>true</failOnWarnings>
                     </configuration>
                     <executions>
+                        <!-- always produce JAR -->
                         <execution>
                             <id>package-javadoc</id>
                             <goals>
@@ -117,10 +146,13 @@
                     <artifactId>maven-jdeprscan-plugin</artifactId>
                     <version>${maven-jdeprscan-plugin.version}</version>
                     <configuration>
+                        <!-- if it's not going to be removed, you can keep using it... -->
                         <forRemoval>true</forRemoval>
+                        <!-- align Java version -->
                         <release>${java.version}</release>
                     </configuration>
                     <executions>
+                        <!-- always run analysis -->
                         <execution>
                             <id>jdeprscan</id>
                             <goals>
@@ -135,10 +167,15 @@
                     <artifactId>maven-release-plugin</artifactId>
                     <version>${maven-release-plugin.version}</version>
                     <configuration>
+                        <!-- keep children aligned with parents -->
                         <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <!-- ensures proper resolution during release -->
                         <mavenExecutorId>forked-path</mavenExecutorId>
+                        <!-- fairly standard tagging convention -->
                         <tagNameFormat>v@{project.version}</tagNameFormat>
+                        <!-- enable the default release profile -->
                         <releaseProfiles>release</releaseProfiles>
+                        <!-- versioning commits during release should not trigger other workflows -->
                         <scmCommentPrefix>[skip ci] </scmCommentPrefix>
                     </configuration>
                 </plugin>
@@ -148,6 +185,7 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>${maven-source-plugin.version}</version>
                     <executions>
+                        <!-- always product JAR -->
                         <execution>
                             <id>package-source</id>
                             <goals>

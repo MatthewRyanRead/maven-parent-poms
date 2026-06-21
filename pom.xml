@@ -17,6 +17,21 @@
     <name>Maven Parent POMs Reactor</name>
     <description>Manages the build for maven-parent-poms</description>
 
+    <licenses>
+        <license>
+            <distribution>repo</distribution>
+            <name>GNU Lesser General Public License, Version 2.1</name>
+            <url>https://github.com/MatthewRyanRead/maven-parent-poms/blob/main/LICENSE</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:MatthewRyanRead/maven-parent-poms.git</connection>
+        <developerConnection>${project.scm.connection}</developerConnection>
+        <url>${project.url}/tree/${project.scm.tag}</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <modules>
         <module>maven-parent-simple</module>
         <module>maven-parent-opinionated</module>
@@ -34,25 +49,6 @@
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>com.spotify.fmt</groupId>
-                    <artifactId>fmt-maven-plugin</artifactId>
-                    <version>${fmt-maven-plugin.version}</version>
-                    <configuration>
-                        <skipReflowingLongStrings>false</skipReflowingLongStrings>
-                        <skipRemovingUnusedImports>false</skipRemovingUnusedImports>
-                        <style>aosp</style>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>validate</phase>
-                            <goals>
-                                <goal>check</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
@@ -73,6 +69,38 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>java11plus-reactor</id>
+            <activation>
+                <jdk>[11,)</jdk>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>com.spotify.fmt</groupId>
+                            <artifactId>fmt-maven-plugin</artifactId>
+                            <version>${fmt-maven-plugin.version}</version>
+                            <configuration>
+                                <skipReflowingLongStrings>false</skipReflowingLongStrings>
+                                <skipRemovingUnusedImports>false</skipRemovingUnusedImports>
+                                <style>aosp</style>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>format</id>
+                                    <phase>validate</phase>
+                                    <goals>
+                                        <goal>check</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
         <profile>
             <id>release</id>
             <build>

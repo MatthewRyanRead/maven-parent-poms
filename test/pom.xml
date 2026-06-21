@@ -15,4 +15,57 @@
     <url>https://github.com/MatthewRyanRead/maven-parent-poms</url>
     <name>Maven Parent POM Testing</name>
     <description>Tests the parent POMs</description>
+
+    <licenses>
+        <license>
+            <distribution>repo</distribution>
+            <name>GNU Lesser General Public License, Version 2.1</name>
+            <url>https://github.com/MatthewRyanRead/maven-parent-poms/blob/main/LICENSE</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:MatthewRyanRead/maven-parent-poms.git</connection>
+        <developerConnection>${project.scm.connection}</developerConnection>
+        <url>${project.url}/tree/${project.scm.tag}</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <!-- dependency versions -->
+
+        <junit.version>5.14.4</junit.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>java17plus-test</id>
+            <activation>
+                <jdk>[17,)</jdk>
+            </activation>
+            <properties>
+                <junit.version>6.1.0</junit.version>
+            </properties>
+        </profile>
+    </profiles>
 </project>
