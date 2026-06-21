@@ -320,7 +320,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-remote-resources-plugin</artifactId>
-                    <version>${maven-resources-plugin.version}</version>
+                    <version>${maven-remote-resources-plugin.version}</version>
                 </plugin>
 
                 <plugin>
@@ -482,8 +482,7 @@
         <profile>
             <id>java8minus-simple</id>
             <activation>
-                <!-- should be 1.8, but doesn't hurt to be over-broad here since 9 was _not_ 1.9 -->
-                <jdk>(,8]</jdk>
+                <jdk>(,9)</jdk>
             </activation>
             <properties>
                 <maven.compiler.source>${java.version}</maven.compiler.source>

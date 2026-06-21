@@ -10,6 +10,10 @@ on:
     types: [opened, reopened, synchronize]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  checks: write
+
 concurrency:
   # only one of this action may run per branch
   group: ${{ github.event.pull_request.head.ref }}-${{ github.workflow }}
@@ -22,9 +26,6 @@ env:
 jobs:
   yaml-linting:
     name: Linting
-    permissions:
-      contents: read
-      checks: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
@@ -48,9 +49,6 @@ jobs:
     outputs:
       MAVEN_3_VERSION: ${{ steps.set-outputs.outputs.MAVEN_3_VERSION }}
       MAVEN_4_VERSION: ${{ steps.set-outputs.outputs.MAVEN_4_VERSION }}
-    permissions:
-      contents: read
-      checks: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
@@ -91,9 +89,6 @@ jobs:
   build-validation:
     name: PR Validation (Maven ${{ matrix.maven-version }}, Java ${{ matrix.java-version }})
     needs: [cache-dependencies]
-    permissions:
-      contents: read
-      checks: write
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -134,7 +129,7 @@ jobs:
           # no restore-keys; use exactly what the cache-dependencies job did
 
       - name: Build and test
-        run: mvn -Djava.version=${{ matrix.java-version }} -o verify
+        run: mvn -Djava.version=${{ matrix.java-version }} verify
 
       # dependency:analyze-only is run as part of the previous step,
       # but this sometimes catches more

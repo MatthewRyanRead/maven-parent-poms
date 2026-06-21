@@ -5,6 +5,27 @@ WIP
 Maven parent POMs for managing default plugins and any other active [official Apache Maven ones](
 https://maven.apache.org/plugins/).
 
+### General Use
+
+Pick one and use it as the parent of your top-level Maven `<project>`:
+
+```xml
+<parent>
+    <groupId>tech.readonly.maven</groupId>
+    <!-- or other -->
+    <artifactId>maven-parent-opinionated</artifactId>
+    <version>EDITME</version>
+</parent>
+```
+
+And if not using the latest LTS version of Java, set `project.properties.java.version`:
+
+```xml
+<properties>
+    <java.version>21</java.version>
+</properties>
+```
+
 ### `maven-parent-simple`
 
 Simply manages the plugins, pinning them to their latest version.
