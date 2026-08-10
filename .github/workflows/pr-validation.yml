@@ -21,7 +21,7 @@ concurrency:
 
 env:
   MAVEN_3_VERSION: 3.9.16
-  MAVEN_4_VERSION: 4.0.0-rc-5
+  MAVEN_4_VERSION: 4.0.0-rc-6
 
 jobs:
   yaml-linting:
@@ -117,7 +117,7 @@ jobs:
           java-version: ${{ matrix.java-version }}
 
       - name: Set up Maven
-        uses: stCarolas/setup-maven@v5
+        uses: stCarolas/setup-maven@v5.1
         with:
           maven-version: ${{ matrix.maven-version }}
 
@@ -129,9 +129,9 @@ jobs:
           # no restore-keys; use exactly what the cache-dependencies job did
 
       - name: Build and test
-        run: mvn -Djava.version=${{ matrix.java-version }} verify
+        run: mvn verify
 
       # dependency:analyze-only is run as part of the previous step,
       # but this sometimes catches more
       - name: Run dependency and bug analysis
-        run: mvn -Djava.version=${{ matrix.java-version }} -o dependency:analyze
+        run: mvn -o dependency:analyze
