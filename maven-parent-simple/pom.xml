@@ -81,7 +81,7 @@
 
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <maven-help-plugin.version>3.5.1</maven-help-plugin.version>
+        <maven-help-plugin.version>3.5.2</maven-help-plugin.version>
 
         <maven-install-plugin.version>3.1.4</maven-install-plugin.version>
 
