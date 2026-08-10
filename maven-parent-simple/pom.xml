@@ -47,7 +47,7 @@
     </developers>
 
     <properties>
-        <java.version>25</java.version>
+        <java.version>${java.specification.version}</java.version>
 
         <!-- plugin versions -->
 

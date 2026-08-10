@@ -18,7 +18,8 @@ Pick one and use it as the parent of your top-level Maven `<project>`:
 </parent>
 ```
 
-And if not using the latest LTS version of Java, set `project.properties.java.version`:
+And if not wanting to default to the current JDK's release target, set
+`project.properties.java.version`:
 
 ```xml
 <properties>
